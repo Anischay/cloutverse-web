@@ -75,7 +75,7 @@ const DemoPage = () => {
         {/* Door Transition */}
         <AnimatePresence mode="wait">
           {showDoor && (
-            <NeonDoor isOpen={doorOpen} onOpenComplete={() => setShowDoor(false)} />
+            <NeonDoor isOpen={doorOpen} onTransitionComplete={() => setShowDoor(false)} />
           )}
         </AnimatePresence>
 
