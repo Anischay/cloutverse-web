@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import PasscodeEntry from '@/components/auth/PasscodeEntry';
 import ClientWrapper from '@/components/ClientWrapper';
 import Navbar from '@/components/layout/Navbar';
@@ -10,11 +10,11 @@ import CoreFeatures from '@/components/sections/CoreFeatures';
 import Markets from '@/components/sections/Markets';
 
 export default function Home() {
-  const [hasAccess, setHasAccess] = useState(false);
+  const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [isEntering, setIsEntering] = useState(false);
 
   useEffect(() => {
-    localStorage.removeItem('cloutverse_access');
+    // Check access token immediately on mount
     const access = localStorage.getItem('cloutverse_access') === 'granted';
     setHasAccess(access);
   }, []);
@@ -22,12 +22,30 @@ export default function Home() {
   const handleAccessGranted = () => {
     setIsEntering(true);
     setTimeout(() => {
+      localStorage.setItem('cloutverse_access', 'granted');
       setHasAccess(true);
     }, 1000);
   };
 
+  // Show nothing while checking access status
+  if (hasAccess === null) {
+    return null;
+  }
+
   if (!hasAccess) {
-    return <PasscodeEntry onAccessGranted={handleAccessGranted} />;
+    return (
+      <AnimatePresence mode="wait">
+        <motion.div
+          key="passcode"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <PasscodeEntry onAccessGranted={handleAccessGranted} />
+        </motion.div>
+      </AnimatePresence>
+    );
   }
 
   return (

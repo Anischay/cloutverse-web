@@ -77,36 +77,30 @@ const PasscodeEntry = ({ onAccessGranted }: PasscodeEntryProps) => {
     </div>
   );
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     setLoading(true);
-    setRitualStep(1);
-    setError(false);
-
-    try {
-      // Clear any existing access first
-      localStorage.removeItem('cloutverse_access');
-      
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setRitualStep(2);
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setRitualStep(3);
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      if (passcode === 'CLOUTVERSE2025') {
-        setRitualStep(4);
-        setUnlocked(true);
-        localStorage.setItem('cloutverse_access', 'granted');
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        onAccessGranted();
-      } else {
-        throw new Error('Invalid passcode');
-      }
-    } catch (error) {
+    if (passcode === 'CLOUTVERSE2025') {
+      setError(false);
+      setRitualStep(1);
+      setTimeout(() => {
+        setRitualStep(2);
+        setTimeout(() => {
+          setRitualStep(3);
+          setTimeout(() => {
+            setRitualStep(4);
+            setTimeout(() => {
+              setUnlocked(true);
+              setTimeout(() => {
+                localStorage.setItem('cloutverse_access', 'granted');
+                onAccessGranted();
+              }, 2000);
+            }, 1000);
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    } else {
       setError(true);
       setLoading(false);
-      setRitualStep(0);
-      setTimeout(() => setError(false), 1000);
     }
   };
 
@@ -290,7 +284,7 @@ const PasscodeEntry = ({ onAccessGranted }: PasscodeEntryProps) => {
       </div>
 
       {/* Content */}
-      <form onSubmit={handleSubmit} className="relative z-10 flex flex-col items-center justify-center space-y-8 p-8">
+      <form onSubmit={(e) => { e.preventDefault(); handleSubmit(); }} className="relative z-10 flex flex-col items-center justify-center space-y-8 p-8">
         <div className="text-center space-y-4">
           <motion.div
             className="text-5xl font-bold text-white mb-6 font-serif tracking-wider"
