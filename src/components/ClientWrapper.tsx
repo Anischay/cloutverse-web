@@ -1,5 +1,6 @@
 'use client';
 
+import { ReactNode } from 'react';
 import dynamic from 'next/dynamic';
 
 const Hero = dynamic(() => import('./Hero'), { 
@@ -22,13 +23,18 @@ const CallToAction = dynamic(() => import('./sections/CallToAction'), {
   loading: () => <div>Loading...</div>
 });
 
-export default function ClientWrapper() {
+interface ClientWrapperProps {
+  children: ReactNode;
+}
+
+export default function ClientWrapper({ children }: ClientWrapperProps) {
   return (
     <>
       <Hero />
       <CoreFeatures />
       <LiveMetrics />
       <CallToAction />
+      {children}
     </>
   );
 }
