@@ -1,0 +1,85 @@
+@layer components {
+  .glassmorphism {
+    @apply backdrop-blur-xl bg-black/20 border border-white/10 rounded-xl;
+  }
+
+  .neo-brutalism {
+    @apply border-2 border-white/20 shadow-[4px_4px_0px_0px_rgba(255,255,255,0.1)];
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-fuchsia-500 to-cyan-400;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-[0_0_30px_rgba(139,92,246,0.3)];
+  }
+
+  .card-neo {
+    @apply relative overflow-hidden rounded-xl bg-black/40 border border-white/10 backdrop-blur-xl;
+  }
+
+  .card-neo::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-violet-500/10 to-fuchsia-500/10 opacity-0 transition-opacity duration-300;
+  }
+
+  .card-neo:hover::before {
+    @apply opacity-100;
+  }
+
+  .magnetic-button {
+    @apply relative overflow-hidden rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 
+           px-6 py-3 font-medium text-white transition-all duration-300
+           hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] hover:scale-105;
+  }
+
+  .magnetic-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-violet-700 to-fuchsia-700 opacity-0 transition-opacity duration-300;
+  }
+
+  .magnetic-button:hover::before {
+    @apply opacity-100;
+  }
+
+  .data-card {
+    @apply relative p-6 rounded-xl border border-white/10 bg-black/40 backdrop-blur-xl
+           transition-all duration-300 hover:bg-black/50;
+  }
+
+  .data-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-violet-500/5 to-fuchsia-500/5 rounded-xl;
+  }
+
+  .animate-float {
+    animation: float 20s infinite;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+    }
+    25% {
+      transform: translateY(-10px) translateX(10px);
+    }
+    50% {
+      transform: translateY(0) translateX(20px);
+    }
+    75% {
+      transform: translateY(10px) translateX(10px);
+    }
+  }
+
+  .grid-background {
+    background-size: 50px 50px;
+    background-image: 
+      linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 10px rgba(139,92,246,0.5);
+  }
+}

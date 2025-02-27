@@ -1,0 +1,25 @@
+/* Demo mode styles */
+html.demo-mode nav,
+html.demo-mode .main-navbar,
+html.demo-mode header,
+html.demo-mode [class*="navbar"],
+html.demo-mode [class*="nav-"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: fixed !important;
+    top: -9999px !important;
+    left: -9999px !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    clip: rect(0 0 0 0) !important;
+    -webkit-clip-path: inset(50%) !important;
+    clip-path: inset(50%) !important;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    transform: translateY(-100%) !important;
+}

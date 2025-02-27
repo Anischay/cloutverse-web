@@ -1,0 +1,77 @@
+/* Portal Theme Styles */
+.portal-gradient {
+  background: radial-gradient(circle at center, rgba(147, 51, 234, 0.2) 0%, transparent 70%);
+}
+
+.portal-border {
+  border: 1px solid rgba(147, 51, 234, 0.2);
+  box-shadow: 
+    0 0 10px rgba(147, 51, 234, 0.1),
+    inset 0 0 20px rgba(147, 51, 234, 0.05);
+}
+
+.portal-text {
+  text-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+}
+
+.portal-glow {
+  filter: drop-shadow(0 0 10px rgba(147, 51, 234, 0.3));
+}
+
+.portal-backdrop {
+  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.cosmic-dots {
+  background-image: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.portal-card {
+  background: rgba(15, 15, 15, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(147, 51, 234, 0.1);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.2),
+    inset 0 0 20px rgba(147, 51, 234, 0.05);
+  transition: all 0.3s ease;
+}
+
+.portal-card:hover {
+  border-color: rgba(147, 51, 234, 0.3);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.3),
+    inset 0 0 30px rgba(147, 51, 234, 0.1);
+}
+
+/* Animated Background */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Portal Ring Animation */
+@keyframes portalPulse {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+.portal-ring {
+  animation: portalPulse 2s ease-in-out infinite;
+}
+
+/* Energy Flow Animation */
+@keyframes energyFlow {
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+  50% { transform: translateY(-10px) rotate(180deg); opacity: 0.7; }
+  100% { transform: translateY(0) rotate(360deg); opacity: 0.3; }
+}
+
+.energy-particle {
+  animation: energyFlow 3s ease-in-out infinite;
+}
