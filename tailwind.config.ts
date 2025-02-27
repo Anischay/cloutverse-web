@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)'],
+        mono: ['var(--font-space-mono)'],
+      },
       backgroundImage: {
         'grid-pattern': "url('/grid.svg')",
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

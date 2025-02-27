@@ -5,10 +5,9 @@ const nextConfig = {
   images: {
     domains: [],
   },
-  // Disable turbopack in production
   experimental: {
-    turbo: process.env.NODE_ENV === 'development',
-  },
+    // Remove turbo config as it's not needed
+  }
 }
 
 module.exports = nextConfig
